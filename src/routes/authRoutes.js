@@ -12,17 +12,15 @@ import {
 
 const router = Router();
 
-// Reg Route
 router.post("/register",register);
-// Login Route
+
 router.post("/login",passport.authenticate('local'), login);
 
-// AUTH Status Route
 router.post("/status", authStatus);
-// Logout Route
+
 router.post("/logout",logout);
 
-// 2FA SETUP
+
 router.post("/2fa/setup", (req, res, next) => {
     if(req.isAuthenticated()){
         return next(); 
@@ -33,7 +31,7 @@ router.post("/2fa/setup", (req, res, next) => {
 
 
 
-// Verify Route
+
 router.post("/2fa/verify", (req, res, next) => {
     if(req.isAuthenticated()){
         return next(); 
@@ -43,7 +41,7 @@ router.post("/2fa/verify", (req, res, next) => {
 } ,verify2FA);
 
 
-// RESET Route
+
 router.post("/2fa/reset", (req, res, next) => {
     if(req.isAuthenticated()){
         return next(); 
